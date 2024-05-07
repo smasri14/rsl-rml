@@ -1,0 +1,202 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>srch-results</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+  <span *ngFor="let thq of chmSrv.params['rml-srch-thqtr'] let j = index">
+    <ion-card>
+      <ion-item>
+        <h2 style="color:#0054e9">RML</h2>
+      </ion-item>
+      
+      <ion-item padding="none">
+        <ion-card-title><ion-list>{{chm[3]}} ({{chm[4]}})</ion-list></ion-card-title>
+      </ion-item>
+
+      <ion-card-header>
+        <ion-badge color="secondary" style="height:20px;width:100%;margin-top:7px;">Fall 2023</ion-badge>
+        <ion-card-subtitle>
+          Target Risk: {{thq[2]}}
+          <br>
+          Hazard Quotient: {{thq[3]}}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <span>
+          <span  *ngFor = "let med of chmSrv.params['rml-srch-media']   let k = index" style="margin-top:3px">
+            <div *ngIf="med[2] === 'Res'">
+              <span>
+                Resident {{med[1]}}: 
+                <ion-text style="font-weight: bolder;">{{chm[7+j][med[4]]}}</ion-text> ({{med[3]}})
+                <span *ngIf="med[5] =='1' ">, {{chm[7+j][med[4]+1]}} </span>
+<!--                <span *ngIf="med[5] !=='0' ">, [{{chm[7+j][med[4]+med[5]]}}] </span> -->
+                
+
+              </span>
+            </div> 
+          </span>
+        </span>
+        <br>
+        <span>
+          <span *ngFor = "let med of chmSrv.params['rml-srch-media']   let k = index" style="margin-top:3px">     
+            <div *ngIf="med[2] === 'Ind'">
+              <span>
+                Industrial {{med[1]}}: <ion-text style="font-weight: bolder;">{{chm[7+j][med[4]]}}</ion-text>  ({{med[3]}})
+                <span *ngIf="med[5] =='1' ">, {{chm[7+j][med[4]+1]}} </span>
+<!--                <span *ngIf="med[5] !=='0' ">, [{{chm[7+j][med[4]+med[5]]}}] </span> -->
+                <!--{{chm[7+j][med[4]+med[5]]}}-->
+
+              </span>
+            </div>  
+          </span>
+        </span>
+      </ion-card-content>
+    </ion-card>
+  </span>
+
+  <ion-card *ngFor="let thq of chmSrv.params['rsl-srch-thqtr'] let j = index">
+
+    <ion-item>
+      <h2 style="color:green">RSL</h2>
+    </ion-item>
+
+    <ion-item padding="none">
+      <ion-card-title><ion-list>{{chm[3]}} ({{chm[4]}})</ion-list></ion-card-title>
+    </ion-item>
+
+    <ion-card-header>
+      <ion-badge color="secondary" style="height:20px;width:100%;margin-top:7px;">Fall 2023</ion-badge>
+      <ion-card-subtitle>Hazard Quotient: {{thq[3]}}</ion-card-subtitle>
+      <ion-card-subtitle>Target Risk: {{thq[2]}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div *ngFor = "let med of chmSrv.params['rsl-srch-media'] let k = index" style="margin-top:3px">
+        <div *ngIf="med[2] === 'Res'">
+          Resident {{med[1]}}: 
+          <ion-text style="font-weight: bolder;">{{chm[6-j][med[4]]}}</ion-text> ({{med[3]}})
+          <span *ngIf="med[5] =='1' ">, {{chm[6-j][med[4]+1]}} </span>
+<!--          <span *ngIf="med[5] !=='0' ">, [{{chm[6-j][med[4]+med[5]]}}] </span> -->
+        </div>
+      </div>
+      <br>
+      <div *ngFor = "let med of chmSrv.params['rsl-srch-media'] let k = index" style="margin-top:3px">       
+        <div *ngIf="med[2] === 'Ind'">
+          Industrial {{med[1]}}: 
+          <ion-text style="font-weight: bolder;">{{chm[6-j][med[4]]}}</ion-text> ({{med[3]}})
+          <span *ngIf="med[5] =='1' ">, {{chm[6-j][med[4]+1]}} </span>
+<!--          <span *ngIf="med[5] !=='0' ">, [{{chm[6-j][med[4]+med[5]]}}] </span>-->
+        </div>                         
+      </div>
+      </ion-card-content>
+  
+    <!--
+    <ion-card-content>
+    <div *ngFor = "let med of chmSrv.params['rsl-srch-media'] let k = index" style="margin-top:3px">
+      <div *ngIf="med[2] === 'Res'">
+        Resident {{med[1]}}: 
+        <ion-text style="font-weight: bolder;">{{chm[6-j][med[4]]}}</ion-text> ({{med[3]}})
+        <span *ngIf="med[5] =='1' ">, {{chm[6-j][med[4]+1]}} </span>
+      </div>
+    </div>
+    <br>
+    <div *ngFor = "let med of chmSrv.params['rsl-srch-media'] let k = index" style="margin-top:3px">       
+      <div *ngIf="med[2] === 'Ind'">
+        Industrial {{med[1]}}: 
+        <ion-text style="font-weight: bolder;">{{chm[6-j][med[4]]}}</ion-text> ({{med[3]}})
+        <span *ngIf="med[5] =='1' ">, {{chm[6-j][med[4]+1]}} </span>
+      </div>                         
+    </div>
+    </ion-card-content>
+  -->    
+  </ion-card>
+
+
+<!--
+  <ion-card *ngFor="let thq of chmSrv.params['rml-srch-thqtr'] let j = index">
+
+    <ion-item>
+      <h2 style="color:#0054e9">RML</h2>
+    </ion-item>
+
+    <ion-item padding="none">
+      <ion-card-title><ion-list>{{chm[3]}} ({{chm[4]}})</ion-list></ion-card-title>
+    </ion-item>
+
+    <ion-card-header>
+      <ion-badge color="secondary" style="height:20px;width:100%;margin-top:7px;">Fall 2023</ion-badge>
+      <ion-card-subtitle>Hazard Quotient: {{thq[3]}}</ion-card-subtitle>
+      <ion-card-subtitle>Target Risk: {{thq[2]}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+    <div *ngFor = "let med of chmSrv.params['rml-srch-media']   let k = index" style="margin-top:3px">
+      <div *ngIf="med[2] === 'Res'">
+
+        Resident {{med[1]}}: 
+        <ion-text style="font-weight: bolder;">{{chem[7+j][med[4]]}}</ion-text> ({{med[3]}})
+        <span *ngIf="med[6] ===1 ">, {{chem[7+j][med[4]+1]}} </span>
+
+        Resident {{med[1]}}: 
+        <ion-text style="font-weight: bolder;">{{chm[7+j][med[4]]}}</ion-text> ({{med[3]}})
+        <span *ngIf="med[5] =='1' ">, {{chm[7+j][med[4]+1]}} </span>
+
+      </div>
+    </div>
+    <br>
+    <div *ngFor = "let med of chmSrv.params['rml-srch-media']   let k = index" style="margin-top:3px">       
+      <div *ngIf="med[2] === 'Ind'">
+        Industrial {{med[1]}}: 
+        <ion-text style="font-weight: bolder;">{{chm[7+j][med[4]]}}</ion-text> ({{med[3]}})
+        <span *ngIf="med[6] ===1 ">, {{chm[7+j][med[4]+1]}} </span>
+      </div>                         
+    </div>
+        
+    </ion-card-content>
+  
+  </ion-card>
+
+  <ion-card *ngFor="let thq of chmSrv.params['rsl-srch-thqtr'] let j = index">
+
+    <ion-item>
+      <h2 style="color:green">RSL</h2>
+    </ion-item>
+
+    <ion-item padding="none">
+      <ion-card-title><ion-list>{{chm[3]}} ({{chm[4]}})</ion-list></ion-card-title>
+    </ion-item>
+
+    <ion-card-header>
+      <ion-badge color="secondary" style="height:20px;width:100%;margin-top:7px;">Fall 2023</ion-badge>
+      <ion-card-subtitle>Hazard Quotient: {{thq[3]}}</ion-card-subtitle>
+      <ion-card-subtitle>Target Risk: {{thq[2]}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+    <div *ngFor = "let med of chmSrv.params['rsl-srch-media']   let k = index" style="margin-top:3px">
+      <div *ngIf="med[2] === 'Res'">
+        Resident {{med[1]}}: 
+        <ion-text style="font-weight: bolder;">{{chm[6-j][med[4]]}}</ion-text> ({{med[3]}})
+        <span *ngIf="med[6] ===1 ">, {{chm[6-j][med[4]+1]}} </span>
+      </div>
+    </div>
+    <br>
+    <div *ngFor = "let med of chmSrv.params['rsl-srch-media']   let k = index" style="margin-top:3px">       
+      <div *ngIf="med[2] === 'Ind'">
+        Industrial {{med[1]}}: 
+        <ion-text style="font-weight: bolder;">{{chm[6-j][med[4]]}}</ion-text> ({{med[3]}})
+        <span *ngIf="med[6] ===1 ">, {{chm[6-j][med[4]+1]}} </span>
+      </div>                         
+    </div>
+    </ion-card-content>
+  </ion-card>
+-->  
+  <br><br>
+</ion-content>
+<ion-footer>
+  <ion-toolbar></ion-toolbar>
+</ion-footer>

@@ -1,0 +1,42 @@
+<html>
+
+<script src="rsl_6_1_0.js"></script>
+<script src="rsl_6_0_1.js"></script>
+<script src="rml_4_1.js"></script>
+<script src="rml_4_3.js"></script>
+
+<script>
+
+
+console.log(rsl_6_1_0[0].slice(13));
+console.log(rsl_6_0_1[0].slice(13));
+console.log(rml_4_1[0].slice(13));
+console.log(rml_4_3[0].slice(13));
+
+
+
+let chmAll = [];
+
+for (let i=0; i<rsl_6_1_0.length; i++){
+	let chm =[,,i+1,rsl_6_1_0[i][13], rsl_6_1_0[i][14]];
+	chm.push(rsl_6_1_0[i].slice(15));
+	chm.push(rsl_6_0_1[i].slice(15));
+	chm.push(rml_4_1[i].slice(15));
+	chm.push(rml_4_3[i].slice(15));
+	chmAll.push(chm);
+}
+
+console.log(chmAll);
+/*
+for (let i=0; i<rsl_6_0_1.length; i++){
+	chm.push(rsl_6_1_0[i].slice(15));
+} 
+
+
+console.log(chm);
+*/
+</script>
+
+
+
+</html>

@@ -1,0 +1,27 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>favorites</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <br>
+  <ion-list>
+    <ion-item detail="false" *ngFor="let item of items let i = index"
+    (click)="goToSrchResults(item[2])"
+    >
+      <!--
+      <ion-icon size="large" color="primary"
+        [name]="item[0] !==0 ? 'checkmark-circle' : 'radio-button-off'"
+        (click)="chmSrv.toggleItem(item)"
+      ></ion-icon>
+      -->
+      <ion-label style="margin-left:10px;"> {{ item[3] }} ({{ item[4] }}) </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+
+

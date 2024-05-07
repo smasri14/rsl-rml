@@ -1,0 +1,195 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>cards</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <br/><br/><br/>
+
+  <ion-card *ngFor="let chm of allAnalytes">
+
+    <ion-item style="padding: 0px; margin:0px;">
+      <ion-icon name="star-outline"></ion-icon>
+      <label style="margin-left:10px">Add to Favorite</label>
+    </ion-item>
+
+    <ion-card-title style="margin-bottom:8px">{{chm[1]}} ({{chm[2]}})</ion-card-title>
+
+    <ion-card-subtitle
+      style="
+        margin-top:1px;margin-bottom:1px;
+        background-color: rgb(0, 145, 255); color: white;
+        width:120px; text-align:center;
+        font-weight: bolder; font-size: larger;
+        padding:10px 6px 10px 6px;
+      "
+    >Fall 2023</ion-card-subtitle>
+    <ion-card-header>
+        <div>***************************</div>
+      <h4 style="color:blue">RML</h4>
+      <div>Target Risk 1E-4</div>
+      <div>Hazard Qoutient: 1.0</div>
+      <div>***************************</div>
+    </ion-card-header>
+    <ion-card-content>
+      <div>Resident Soil: <b>{{chm[3]}}</b> (mg/kg), n</div>
+      <div>Resident Tapwater: <b>{{chm[4]}}</b> (um/L), n</div>
+      <div>Resident Air: <b>{{chm[5]}}</b> (ug/m^3),</div>
+      <div>Resident Tapwater (MCL): <b>{{chm[6]}}</b> (ug/L/)</div>
+    </ion-card-content>
+  </ion-card>>
+
+  <!-- <ion-content id="cards-content"> -->
+      <!--
+      <button ion-button icon-start padding-left padding-right clear click="toggleFavorite(chemical)">
+
+        <ion-icon name={{chmgetButtonIcon(chemical)}} size="large"><span class="smaller">Add to Favorite</span></ion-icon>
+      </button>
+    -->
+       <!--<ion-card-title padding>[[<span chm_1=""></span>]]</ion-card-title>-->
+<!--
+       <ion-card-content no-padding>
+
+          <div ngIf="!!!chemical.rml10chemical_id">
+            <p><b>[[chemVers]]</b><br>
+              ************************<br>
+              <span class="rml">RML</span><br>
+              Target Risk: 1E-4<br>
+              Hazard Quotient:  1.0<br>
+              ************************
+            </p>
+            <p>
+                CAS No.: {{chm[3]}}
+            </p>
+          -->
+            <!--
+            <div *ngFor="let scenario of scenarios" padding-top padding-bottom>
+              <div *ngIf="scenario.id == this.databaseProvider.residentScenarioId">
+                <p *ngFor="let exposureRoute of exposureRoutes">
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rml10ressoilprg}}</b> (mg/kg), {{chemical.rml10ressoilkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.airExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rml10resairprg}}</b> (ug/m^3), {{chemical.rml10resairkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.tapwaterExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rml10restapprg}}</b> (ug/L), {{chemical.rml10restapkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.tapwaterMCLExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rml10mcl}}</b> (ug/L)</span>
+                </p>
+              </div>
+              <div *ngIf="scenario.id == this.databaseProvider.industrialScenarioId">
+                <p *ngFor="let exposureRoute of exposureRoutes">
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilExposureRouteId" >{{scenario.name}} {{exposureRoute.name}}: <b>{{chemical.rml10indsoilprg}}</b> (mg/kg), {{chemical.rml10indsoilkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.airExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rml10indairprg}}</b> (ug/m^3), {{chemical.rml10indairkey}}</span>
+                </p>
+              </div>
+            </div>
+          -->
+          <!--
+            </div>
+          <div ngIf="!!chemical.rml30chemical_id">
+            <p><b>[[chemVers]]</b><br>
+              ************************<br>
+              <span class="rml">RML</span><br>
+              Target Risk: 1E-4<br>
+              Hazard Quotient:  3.0<br>
+              ************************
+            </p>
+            <p>
+                CAS No.: {{chm[1]}}
+            </p>
+          -->
+            <!--
+            <div *ngFor="let scenario of scenarios" padding-top padding-bottom>
+              <div *ngIf="scenario.id == this.databaseProvider.residentScenarioId">
+                <p *ngFor="let exposureRoute of exposureRoutes">
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rml30ressoilprg}}</b> (mg/kg), {{chemical.rml30ressoilkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.airExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rml30resairprg}}</b> (ug/m^3), {{chemical.rml30resairkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.tapwaterExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rml30restapprg}}</b> (ug/L), {{chemical.rml30restapkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.tapwaterMCLExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rml30mcl}}</b> (ug/L)</span>
+                </p>
+              </div>
+              <div *ngIf="scenario.id == this.databaseProvider.industrialScenarioId">
+                <p *ngFor="let exposureRoute of exposureRoutes">
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilExposureRouteId" >{{scenario.name}} {{exposureRoute.name}}: <b>{{chemical.rml30indsoilprg}}</b> (mg/kg), {{chemical.rml30indsoilkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.airExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rml30indairprg}}</b> (ug/m^3), {{chemical.rml30indairkey}}</span>
+                </p>
+              </div>
+            </div>
+          -->
+          <!--
+          </div>
+        </ion-card-content>
+      -->
+        <!--
+        <button ion-item (click)="goToNextPage(chemical)"><ion-icon name="information-circle">  More info...</ion-icon></button>
+        -->
+    <!--</ion-card>-->
+    <!--
+    <ion-card *ngFor="let chemical of rslItems">
+        <button ion-button icon-start padding-left padding-right clear (click)="toggleFavorite(chemical)">
+          <ion-icon name={{getButtonIcon(chemical)}} size="large"><span class="smaller">Add to Favorite</span></ion-icon>
+        </button>
+        <ion-card-title padding>{{chemical.chemical}}</ion-card-title>
+        <ion-card-content no-padding>
+          <div *ngIf="!!chemical.rsl10chemical_id">
+            <p><b>{{chemVers}}</b><br>
+              ************************<br>
+              <span class="rsl">RSL</span><br>
+              Target Risk: 1E-6<br>
+              Hazard Quotient:  1.0<br>
+              ************************
+            </p>
+            <p>
+                CAS No.: {{chemical.casnum}}
+            </p>
+            <div *ngFor="let scenario of scenarios" padding-top padding-bottom>
+              <div *ngIf="scenario.id == this.databaseProvider.residentScenarioId">
+                <p *ngFor="let exposureRoute of exposureRoutes">
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl10ressoilprg}}</b> (mg/kg), {{chemical.rsl10ressoilkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.airExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl10resairprg}}</b> (ug/m^3), {{chemical.rsl10resairkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.tapwaterExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl10restapprg}}</b> (ug/L), {{chemical.rsl10restapkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.tapwaterMCLExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl10mcl}}</b> (ug/L)</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilToGroundwaterExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl10sl}}</b> (mg/kg), {{chemical.rsl10sgwkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilToGroundwaterMCLExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl10slmcl}}</b> (mg/kg), {{chemical.rsl10sgwkey}}</span>
+                </p>
+              </div>
+              <div *ngIf="scenario.id == this.databaseProvider.industrialScenarioId">
+                <p *ngFor="let exposureRoute of exposureRoutes">
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilExposureRouteId" >{{scenario.name}} {{exposureRoute.name}}: <b>{{chemical.rsl10indsoilprg}}</b> (mg/kg), {{chemical.rsl10indsoilkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.airExposureRouteId" >{{scenario.name}} {{exposureRoute.name}}: <b>{{chemical.rsl10indairprg}}</b> (ug/m^3), {{chemical.rsl10indairkey}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!!chemical.rsl01chemical_id">
+            <p><b>{{chemVers}}</b><br>
+              ************************<br>
+              <span class="rsl">RSL</span><br>
+              Target Risk: 1E-6<br>
+              Hazard Quotient:  0.1<br>
+              ************************
+            </p>
+            <p>
+                CAS No.: {{chemical.casnum}}
+            </p>
+            <div *ngFor="let scenario of scenarios" padding-top padding-bottom>
+              <div *ngIf="scenario.id == this.databaseProvider.residentScenarioId">
+                <p *ngFor="let exposureRoute of exposureRoutes">
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl01ressoilprg}}</b> (mg/kg), {{chemical.rsl01ressoilkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.airExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl01resairprg}}</b> (ug/m^3), {{chemical.rsl01resairkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.tapwaterExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl01restapprg}}</b> (ug/L), {{chemical.rsl01restapkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.tapwaterMCLExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl01mcl}}</b> (ug/L)</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilToGroundwaterExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl01sl}}</b> (mg/kg), {{chemical.rsl01sgwkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilToGroundwaterMCLExposureRouteId" >{{scenario.name}}  {{exposureRoute.name}}: <b>{{chemical.rsl01slmcl}}</b> (mg/kg), {{chemical.rsl01sgwkey}}</span>
+                </p>
+              </div>
+              <div *ngIf="scenario.id == this.databaseProvider.industrialScenarioId">
+                <p *ngFor="let exposureRoute of exposureRoutes">
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.soilExposureRouteId" >{{scenario.name}} {{exposureRoute.name}}: <b>{{chemical.rsl01indsoilprg}}</b> (mg/kg), {{chemical.rsl01indsoilkey}}</span>
+                    <span *ngIf="exposureRoute.id == this.databaseProvider.airExposureRouteId" >{{scenario.name}} {{exposureRoute.name}}: <b>{{chemical.rsl01indairprg}}</b> (ug/m^3), {{chemical.rsl01indairkey}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </ion-card-content>
+        <button ion-item (click)="goToNextPage(chemical)"><ion-icon name="information-circle">  More info...</ion-icon></button>
+    </ion-card>
+  -->
+</ion-content>

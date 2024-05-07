@@ -1,0 +1,75 @@
+<ion-app>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+
+      <ion-menu-button *ngIf="!showBackBtn" slot="start" ></ion-menu-button>
+      <!--defaultHrefxx="{{prevPage}}"-->
+
+      <ion-back-button  *ngIf="showBackBtn" text="Back" (click)="goBack()" defaultHref="" color="primary" icon="chevron-back"   slot="start"></ion-back-button>
+<!--    <ion-back-button  *ngIf="showBackBtn" text="Back" click="goBack()" color="primary" icon="chevron-back"   slot="start"></ion-back-button> -->
+
+      <ion-searchbar placeholder="RSL Quick Search"
+        *ngIf="showRslSrch"
+        (ionInput)="onSrchChng($event, 'S')"
+        debounce="500"
+        [value]="chmSrv.params.rslSrchVal"
+      ></ion-searchbar>
+
+      <ion-searchbar placeholder="RML Quick Search"
+        *ngIf="showRmlSrch"
+        (ionInput)="onSrchChng($event, 'M')"
+        debounce="500"
+        [value]="chmSrv.params.rmlSrchVal"
+      ></ion-searchbar>
+
+      <ion-title
+        *ngIf="showPageTitle"
+      ><div style="text-align:center;">{{pageTitle}}</div></ion-title>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list idxx="inbox-list">
+          <ion-list-header></ion-list-header>
+            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index" >
+              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+                <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+  <ion-router-outlet id="main-content" ></ion-router-outlet>
+</ion-split-pane>
+
+<ion-footer [translucent]="true">
+
+  <ion-tab-bar>
+    <ion-tab-button tab="home" (click)="goTo('home')" routerLink="home" routerLinkActive="selected">
+      <ion-icon aria-hidden="true" name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="rsl-srch" (click)="goTo('rsl-srch')" routerLink="rsl-srch" routerLinkActive="selected" >
+      <ion-icon aria-hidden="true" name="search"></ion-icon>
+      <ion-label>RSL</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="rml-srch" (click)="goTo('rml-srch')" routerLink="rml-srch" routerLinkActive="selected">
+      <ion-icon aria-hidden="true" name="search"></ion-icon>
+      <ion-label>RML</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="key" routerLink="key" routerLinkActive="selected">
+      <ion-icon aria-hidden="true" name="key" (click)="goTo('key')"></ion-icon>
+      <ion-label>Key</ion-label>
+    </ion-tab-button>
+</ion-tab-bar>
+
+</ion-footer>
+
+</ion-app>

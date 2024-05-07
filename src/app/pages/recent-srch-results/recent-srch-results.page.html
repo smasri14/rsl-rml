@@ -1,0 +1,92 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>recent-srch-results</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">recent-srch-results</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div *ngFor="let chm of chmSrv.params['rml-srch'] let i = index">
+    <ion-item lines="none">
+      <ion-icon
+      style="margin-right:20px"
+      color="primary"
+      [name] = "getStarType(chm[2])"
+      click="starToggle2($event,);"
+      ></ion-icon>
+<!--
+      <div *ngFor="let fv of chmSrv.params['favorites'] ">
+        <ion-icon
+        style="margin-right:20px"
+        color="primary"
+        [name] = "getStarType(chm[2])"
+        (click)="starToggle(chm, i);"
+        ></ion-icon>
+      </div>
+    -->
+      <ion-label>Add to Favorites</ion-label>
+    </ion-item>
+
+    <ion-card *ngFor="let thq of chmSrv.params['rml-srch-thqtr'] let j = index">
+
+      <div *ngIf="thq[0]===1 || chmSrv.params.prevUrl === 'rml-srch'">
+
+        <ion-card-header>
+          <ion-card-title><ion-list>{{chm[3]}} ({{chm[4]}})</ion-list></ion-card-title>
+          <ion-badge color="secondary" style="width:100%">Fall 2023</ion-badge>
+          <ion-card-title>RML</ion-card-title>
+          <ion-card-subtitle>Target Risk: {{thq[2]}}</ion-card-subtitle>
+          <ion-card-subtitle>Hazard Quotient: {{thq[3]}}</ion-card-subtitle>
+          <ion-item color="secondary" style="height:1px;margin-top:10px" ></ion-item>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div *ngFor = "let med of chmSrv.params['rml-srch-media']   let k = index">
+            <div *ngIf="
+              (
+                med[2]==='Res'
+                && med[0]===1
+                && chmSrv.params['rml-srch-scenarios'][0][0]===1
+              )
+            ">
+              Residential {{med[1]}}: {{chm[7+j][med[4]]}} {{med[3]}}
+              <span *ngIf="med[6] ===1 ">, {{chm[7+j][med[5]]}} </span>
+            </div>
+            <div *ngIf="
+              (
+                med[2]==='Ind'
+                && med[0]===1
+                && chmSrv.params['rml-srch-scenarios'][0][0]===1
+              )
+            ">
+              <br *ngIf="chmSrv.params['rml-srch-media'][k-1][2]==='Res'">
+              Industrial {{med[1]}}: {{chm[7+j][med[4]]}}  {{med[3]}}
+              <span *ngIf="med[5] ===1 ">, {{chm[7+j][med[4]+1]}} </span>
+            </div>
+
+            <div *ngIf="med[2]==='Res' && chmSrv.params.prevUrl === 'rml-srch'">
+              Residential {{med[1]}}: {{chm[7+j][med[4]]}} {{med[3]}}
+              <span *ngIf="med[5] === 1 ">, {{chm[7+j][med[4]+1]}} </span>
+            </div>
+
+            <div *ngIf="med[2]==='Ind' && chmSrv.params.prevUrl === 'rml-srch'">
+              <br *ngIf="chmSrv.params['rml-srch-media'][k-1][2]==='Res'">
+              Industrial {{med[1]}}: {{chm[7+j][med[4]]}} {{med[3]}}
+              <span *ngIf="med[6] ===1 ">, {{chm[7+j][med[4]+1]}} </span>
+            </div>
+          </div>
+        </ion-card-content>
+      </div>
+    </ion-card>
+    <ion-item (click)="chmSrv.goTo('srch-results')"><ion-icon name="information-circle" style="margin-right:10px"></ion-icon><ion-text size="large"> More info ... </ion-text><ion-icon slot="end" name="chevron-forward"></ion-icon></ion-item>
+</div>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar></ion-toolbar>
+</ion-footer>
